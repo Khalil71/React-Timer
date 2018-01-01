@@ -2,7 +2,15 @@ var webpackConfig = require('./webpack.config.js')
 
 module.exports = function (config) {
   config.set({
-    // browsers:['Chrome'],
+    browsers:['FirefoxAutoAllowGUM'],
+    customLaunchers: {
+    FirefoxAutoAllowGUM: {
+        base: 'Firefox',
+        prefs: {
+            'media.navigator.permission.disabled': true
+        }
+      }
+    },
     singleRun:true,
     frameworks: ['mocha'],
     files:['app/tests/**/*.test.jsx'],
@@ -12,7 +20,7 @@ module.exports = function (config) {
     reporters: ['mocha'],
     client:{
       mocha:{
-        timeout: '10000'
+        timeout: '6000'
       }
     },
     webpack: webpackConfig,
